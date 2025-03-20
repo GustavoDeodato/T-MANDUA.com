@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.fundo{
+    background-image: url(../img/imagem1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  
+}
+
+main{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecalho{
+    margin: 10vh;
+    height: 85vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.Cadastrar{
+    padding: 20px;
+    width: 100%;
+    color: black;
+}
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #e0e0e0;
+}
+.criar {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.criar:hover {
+    background: #f0f0f0;
+}
+.voltar-login {
+    display: block;
+    margin-top: 10px;
+    color: blue;
+    text-decoration: none;
+}
+
+.voltar-login:hover {
+    text-decoration: underline;
+}
