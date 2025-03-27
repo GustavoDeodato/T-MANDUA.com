@@ -1,17 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-main{
+
+body {
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f2f2f2;
 }
 
-.fundo{
+.fundo {
     background-image: url(../img/imagem1.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -21,12 +23,12 @@ main{
     z-index: -1;
 }
 
-.login-container {
+.recuperacao-container {
     background: rgba(255, 255, 255, 0.5);
     padding: 20px;
 }
 
-.login-card {
+.recuperacao-card {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -36,6 +38,7 @@ main{
 h2 {
     margin-bottom: 20px;
     font-size: 24px;
+    font-weight: bold;
 }
 
 .input-group {
@@ -51,7 +54,14 @@ h2 {
     background: #e0e0e0;
 }
 
-.login-button {
+.input-group img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.recuperacao-button {
     width: 100%;
     padding: 10px;
     font-size: 18px;
@@ -61,10 +71,30 @@ h2 {
     cursor: pointer;
 }
 
-.login-button:hover {
-    background: #c6c6c6;
+.recuperacao-button:hover {
+    background: #f0f0f0;
 }
-.forgot-password {
+.entrar {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.entrar .recuperacao-button {
+    width: 100%;
+    font-size: 16px;
+    background: #fff;
+    border: 2px solid black;
+    color: white;
+    cursor: pointer;
+    color: black;
+}
+
+.entrar .recuperacao-button:hover {
+    background-color: #c6c6c6;
+}
+
+.voltar-login {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -72,6 +102,6 @@ h2 {
     text-decoration: none;
 }
 
-.forgot-password:hover {
+.voltar-login:hover {
     text-decoration: underline;
 }
