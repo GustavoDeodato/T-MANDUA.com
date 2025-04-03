@@ -1,8 +1,9 @@
 'use strict'
 
-async function RecuperaçãoSenha() {
+async function recuperacaoSenha() {
     const email = document.getElementById('Email').value
     const wordkey = document.getElementById('SenhaRecuperacao').value
+
     const url = `https://back-spider.vercel.app/user/RememberPassword`
     const urlPut = `https://back-spider.vercel.app/user/newPassword/2`
 
@@ -21,25 +22,26 @@ async function RecuperaçãoSenha() {
 
     try {
         const response = await fetch(url, options)
-        if (!response.ok) {
-            console.error('Falha ao validar a chave de recuperação:', response.statusText)
+        
+        const result = await response.json()
+        console.log('Resultado da API de recuperação:', result)
+
+        if (!response.ok || !result.success) {
+            console.error('Falha ao validar a chave de recuperação:', result.message || response.statusText)
             alert("Erro ao validar chave de recuperação. Verifique se os dados estão corretos.")
-            return
+            return;
         }
 
-        const result = await response.json()
-        console.log(result)
         alert("Chave de recuperação validada com sucesso!")
-        
-        modal()
-        
+        modal(urlPut)
+
     } catch (error) {
         console.error('Erro durante o processo:', error)
         alert("Ocorreu um erro inesperado. Tente novamente.")
     }
 }
 
-function modal() {
+function modal(urlPut) {
     const modalContainer = document.createElement("div")
     modalContainer.style.position = "fixed"
     modalContainer.style.top = "0"
@@ -89,7 +91,7 @@ function modal() {
     botaoConfirmar.style.border = "none"
     botaoConfirmar.style.borderRadius = "5px"
     botaoConfirmar.style.cursor = "pointer"
-    botaoConfirmar.addEventListener("click", () => atualizarSenha(modalContainer))
+    botaoConfirmar.addEventListener("click", () => atualizarSenha(modalContainer, urlPut))
 
     const botaoCancelar = document.createElement("button")
     botaoCancelar.textContent = "Cancelar"
@@ -110,13 +112,18 @@ function modal() {
     document.body.appendChild(modalContainer)
 }
 
-async function atualizarSenha(modalContainer) {
+async function atualizarSenha(modalContainer, urlPut) {
     const novaSenha = document.getElementById("NovaSenha").value
     const confirmarSenha = document.getElementById("ConfirmarSenha").value
 
+    if (!novaSenha || !confirmarSenha) {
+        alert("Por favor, preencha todos os campos.")
+        return
+    }
+
     if (novaSenha !== confirmarSenha) {
         alert("As senhas não coincidem. Por favor, tente novamente.")
-        return
+        return;
     }
 
     const dataNew = {
@@ -131,15 +138,22 @@ async function atualizarSenha(modalContainer) {
         body: JSON.stringify(dataNew)
     }
 
-    const responseNew = await fetch(urlPut, optionsNew)
-    if (responseNew.ok) {
-        alert("Senha alterada com sucesso!")
-        window.location.href = '../login/index.html'
-        modalContainer.remove()
-    } else {
-        console.error('Falha ao atualizar a senha:', responseNew.statusText)
-        alert("Erro ao alterar senha. Tente novamente.")
+    try {
+        const responseNew = await fetch(urlPut, optionsNew)
+        const resultNew = await responseNew.json()
+
+        console.log('Resultado da API de atualização:', resultNew)
+
+        if (responseNew.ok) {
+            alert("Senha alterada com sucesso!")
+            window.location.href = '../login/index.html'
+            modalContainer.remove()
+        } else {
+            console.error('Falha ao atualizar a senha:', resultNew.message || responseNew.statusText)
+            alert("Erro ao alterar senha. Tente novamente.")
+        }
+    } catch (error) {
+        console.error('Erro ao atualizar a senha:', error)
+        alert("Ocorreu um erro ao tentar atualizar a senha.")
     }
 }
-
-document.getElementById('botao-recuperacao').addEventListener("click", RecuperaçãoSenha)

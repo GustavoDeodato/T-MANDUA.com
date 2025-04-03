@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+
+
+.barradecima{
+    height: 5vh;
+    width: 100%;
+    background-color: black;
+
+}
+main{
+    background-color: black;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+.banner{
+    width: 100%;
+    height: 35vh;
+    background-color: aqua;
+}
+
+.editar{
+    margin-left: 85vw;
+    margin-top: 1vh;
+    width: 5vw;
+
+}
+footer{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-items: end;
+    flex-direction: column;
+}
+
+.opcoes{
+    font-size: 24px;
+    color: white;
+    display: flex;
+}

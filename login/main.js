@@ -23,8 +23,12 @@ const login = async () => {
 
         if (response.ok) {
             const result = await response.json()
-              alert("Usuário cadastrado com sucesso!")
-              window.location.href = '../home/home.html'
+            if (result.success) {
+                alert("Login realizado com sucesso!")
+                window.location.href = '../home/home.html'
+            } else {
+                alert("Erro ao logar. Verifique se os dados estão corretos")
+            }
             console.log(result)
         } else {
             console.error('Login falhou:', response.statusText)
@@ -34,6 +38,5 @@ const login = async () => {
         console.error('Error durante o login:', error)
     }
 }
-
 
 document.getElementById('entrarLogin').addEventListener('click', login)
