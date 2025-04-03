@@ -8,7 +8,46 @@
     <title>T-mandua</title>
 </head>
 <body>
-    <div class="logo"></div>
-    <img src="../img/logo.png" alt="">
+    <div class="container">
+        <!-- Barra lateral -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../img/logo.png" alt="Logo T-mandua">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- Conteúdo principal -->
+        <main class="main-content">
+            <div class="post-area">
+                <textarea placeholder="What's happening?" rows="3"></textarea>
+                <button class="tweet-button">Post</button>
+            </div>
+            <div class="feed">
+                <div class="tweet">
+                    <div class="tweet-header">
+                        <img src="../img/user.jpg" alt="User" class="user-avatar">
+                        <span class="user-name">User Name</span>
+                    </div>
+                    <p class="tweet-content">This is an example tweet. #example</p>
+                </div>
+                <div class="tweet">
+                    <div class="tweet-header">
+                        <img src="../img/user.jpg" alt="User" class="user-avatar">
+                        <span class="user-name">User Name</span>
+                    </div>
+                    <p class="tweet-content">Another example tweet. #example2</p>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

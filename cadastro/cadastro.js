@@ -55,3 +55,4 @@ async function CadastrarUsuario() {
         button.innerText = "Criar Conta"
     }
 }
+
