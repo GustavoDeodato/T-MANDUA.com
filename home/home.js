@@ -2,6 +2,10 @@
 
 const baseURL = 'https://back-spider.vercel.app/publicacoes'
 
+function getUserId() {
+    return localStorage.getItem('userId')
+}
+
 async function carregarPublicacoes() {
     const response = await fetch(`${baseURL}/listarPublicacoes`)
     const publicacoes = await response.json()
@@ -56,7 +60,12 @@ function criarTweet(publicacao) {
     likeButton.textContent = 'Curtir'
     likeButton.classList.add('like-button')
     likeButton.onclick = async () => {
-        await curtirPublicacao(publicacao.id, likeCount)
+        const userId = getUserId()
+        if (userId) {
+            await curtirPublicacao(publicacao.id, likeCount, userId)
+        } else {
+            alert('Você precisa estar logado para curtir!')
+        }
     }
 
     const commentButton = document.createElement('button')
@@ -75,18 +84,23 @@ function criarTweet(publicacao) {
     return tweet
 }
 
-
 async function postarPublicacao() {
     const descricao = document.querySelector('textarea').value
     if (!descricao) return alert('Escreva algo antes de postar!')
 
     const dataPublicacao = new Date().toISOString().split('T')[0]
+    const userId = getUserId()
+
+    if (!userId) {
+        return alert('Você precisa estar logado para postar!')
+    }
+
     const novaPublicacao = {
         descricao,
         dataPublicacao,
         imagem: 'https://www.aluralingua.com.br/artigos/assets/professor.jpg',
         local: 'Faculdade',
-        idUsuario: 1
+        idUsuario: userId
     }
 
     const response = await fetch(`${baseURL}/cadastrarPublicacao`, {
@@ -103,15 +117,15 @@ async function postarPublicacao() {
     }
 }
 
-async function curtirPublicacao(idPublicacao, likeCountElement) {
+async function curtirPublicacao(idPublicacao, likeCountElement, userId) {
     const response = await fetch(`${baseURL}/likePublicacao/${idPublicacao}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idUser: 4 })
+        body: JSON.stringify({ idUser: userId })
     })
 
     if (response.ok) {
-        let currentLikes = parseInt(likeCountElement.textContent.split(' ')[1]) || 0;
+        let currentLikes = parseInt(likeCountElement.textContent.split(' ')[1]) || 0
         likeCountElement.textContent = `Likes: ${currentLikes + 1}`
     } else {
         alert('Erro ao curtir a publicação')
@@ -148,10 +162,15 @@ async function enviarComentario(idPublicacao) {
     const descricao = document.getElementById('comment-text').value
     if (!descricao) return alert('Digite um comentário!')
 
+    const userId = getUserId()
+    if (!userId) {
+        return alert('Você precisa estar logado para comentar!')
+    }
+
     const response = await fetch(`${baseURL}/commentPublicacao/${idPublicacao}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idUser: 1, descricao })
+        body: JSON.stringify({ idUser: userId, descricao })
     })
 
     if (response.ok) {
@@ -161,6 +180,5 @@ async function enviarComentario(idPublicacao) {
         alert('Erro ao comentar')
     }
 }
-
 document.querySelector('.tweet-button').addEventListener('click', postarPublicacao)
 document.addEventListener('DOMContentLoaded', carregarPublicacoes)

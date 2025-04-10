@@ -1,51 +1,100 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: #121212;
+    font-family: 'Arial', sans-serif;
 }
 
-
-
-.barradecima{
+.barradecima {
     height: 5vh;
     width: 100%;
-    background-color: black;
-
+    background-color: #1c1c1c;
 }
-main{
-    background-color: black;
+
+main {
+    background-color: #121212;
     height: 80vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-.banner{
+
+.banner {
     width: 100%;
     height: 35vh;
-    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
 }
 
-.editar{
-    margin-left: 85vw;
+.foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.editar {
     margin-top: 1vh;
     width: 5vw;
-
+    padding: 8px 12px;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-footer{
+
+footer {
     height: 10vh;
     width: 100%;
     display: flex;
-    justify-items: end;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #1c1c1c;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
-.opcoes{
-    font-size: 24px;
+.opcoes {
+    font-size: 18px;
     color: white;
     display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.voltar-login {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.voltar-login:hover {
+    color: #00bcd4;
 }
