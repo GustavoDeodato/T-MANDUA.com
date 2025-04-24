@@ -48,6 +48,7 @@ main {
     background-size: cover;
     background-position: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    
 }
 
 .editar {
@@ -59,16 +60,14 @@ main {
     padding: 10px 15px;
     border: none;
     border-radius: 25px;
-    background-color: #00bcd4;
-    color: white;
+    background-color: #121212;
+    color: rgb(255, 255, 255);
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+
 }
 
-#editar-perfil:hover {
-    background-color: #0097a7;
-}
+
 
 footer {
     height: 10vh;
@@ -111,4 +110,12 @@ footer {
 
 .voltar-login:hover {
     color: #00bcd4;
+}
+
+.info-perfil {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 5vw;
 }
