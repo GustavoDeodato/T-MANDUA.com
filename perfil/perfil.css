@@ -35,41 +35,39 @@ main {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
-}
-.banner img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
 }
 
 .foto {
     width: 120px;
     height: 120px;
+    margin-top: -60px; 
     border-radius: 50%;
     background-color: #ddd;
-    display: flex;
-    justify-content: start;
-    align-items: start;
+    background-size: cover;
+    background-position: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.foto img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+.editar {
+    margin-top: 2vh;
 }
 
-.editar {
-    margin-top: 1vh;
-    width: 5vw;
-    padding: 8px 12px;
+#editar-perfil {
+    width: 200px;
+    padding: 10px 15px;
     border: none;
     border-radius: 25px;
+    background-color: #00bcd4;
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+#editar-perfil:hover {
+    background-color: #0097a7;
 }
 
 footer {
@@ -90,6 +88,17 @@ footer {
     display: flex;
     justify-content: space-around;
     width: 100%;
+    list-style: none;
+}
+
+.opcoes li a {
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.opcoes li a:hover {
+    color: #00bcd4;
 }
 
 .voltar-login {

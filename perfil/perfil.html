@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +13,22 @@
     </header>
 
     <main>
-        <div class="banner" id="banner">
-            <img src="../img/banner.jpg" alt="">
-        </div>
-        <div class="foto" id="foto">
-            <img src="../img/usuario.jpg" alt="usuario">
-        </div>
+        <div class="banner" id="banner" aria-label="Banner do usuário"></div>
+
+        <div class="foto" id="foto" aria-label="Foto de perfil do usuário"></div>
+
         <div class="editar">
-            <button id="editar-perfil">editar perfil</button>
+            <input type="button" id="editar-perfil" value="Editar Perfil">
         </div>
-        
     </main>
 
     <footer>
-        <div class="opcoes">
+        <ul class="opcoes">
             <li><a href="../home/home.html">Home</a></li>
             <li><a href="#">Posts</a></li>
             <li><a href="#">Curtidas</a></li>
-        </div>
-        
+        </ul>
+
         <a href="../login/index.html" class="voltar-login">Voltar para o login</a>
     </footer>
 </body>
